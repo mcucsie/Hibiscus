@@ -1,0 +1,29 @@
+# Cordova
+platforms/
+plugins/
+resources/signing
+*.log
+
+# Node
+node_modules/
+
+# Vue, Webpack
+*.dist
+
+# Windows
+Thumbs.db
+Desktop.ini
+~$*
+
+# macOS
+*.DS_Store
+
+# VIm
+*.sw?
+
+# IntelliJ IDEA
+*.iml
+.idea
+
+# VS Code
+.vscode/
