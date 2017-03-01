@@ -1,46 +1,44 @@
-/*
- * Licensed to the Apache Software Foundation (ASF) under one
- * or more contributor license agreements.  See the NOTICE file
- * distributed with this work for additional information
- * regarding copyright ownership.  The ASF licenses this file
- * to you under the Apache License, Version 2.0 (the
- * "License"); you may not use this file except in compliance
- * with the License.  You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing,
- * software distributed under the License is distributed on an
- * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- * KIND, either express or implied.  See the License for the
- * specific language governing permissions and limitations
- * under the License.
- */
-var app = {
-    // Application Constructor
-    initialize: function() {
-        document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
-    },
-
-    // deviceready Event Handler
-    //
-    // Bind any cordova events here. Common events are:
-    // 'pause', 'resume', etc.
-    onDeviceReady: function() {
-        this.receivedEvent('deviceready');
-    },
-
-    // Update DOM on a Received Event
-    receivedEvent: function(id) {
-        var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
-
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
-
-        console.log('Received Event: ' + id);
-    }
-};
-
-app.initialize();
+document.addEventListener('deviceready', function() {
+    var $app = document.getElementById('app'),
+        $account = document.getElementById('account'),
+        $password = document.getElementById('password'),
+        $submit = document.getElementById('submit'),
+        $table = document.createElement('table'),
+        callback = function(hasError, data) {
+            if (hasError) {
+                alert('登入失敗，請確認帳號密碼是否輸入錯誤，已錯誤 ' + data.step + ' 次，\n請注意避免 10 次，否則會被鎖帳號，需要去課務組解鎖。');
+                return;
+            }
+            
+            $table.querySelectorAll('td').forEach(function() {
+                this.innerHTML = '';
+            });
+            
+            for (var i = 0; i < data.length; ++i) {
+                var course = data[i],
+                    html = course.subjectName + '<br />' + course.site.join('<br />');
+                for (var j = 0; j < course.time.length; ++j) {
+                    var time = course.time[j], cid = 'c' + time.day;
+                    for (var k = 0; k < time.sec.length; ++k) {
+                        var sec = time.sec[k], sid = cid + sec;
+                        document.getElementById(sid).innerHTML = html;
+                    }
+                }
+            }
+        };
+        
+        $submit.onclick = function() {
+            var data = JSON.stringify({account: $account.value, password: $password.value}),
+                xhr = new XMLHttpRequest;
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    callback(xhr.status !== 200, JSON.parse(xhr.responseText));
+                }
+            };
+            xhr.open('POST', 'https://coapi.csie.mcu.edu.tw/course/8/my/');
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.send(data);
+        }
+        
+        $app.appendChild($table);
+}, false);

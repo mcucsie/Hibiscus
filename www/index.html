@@ -1,48 +1,186 @@
 <!DOCTYPE html>
-<!--
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
--->
 <html>
     <head>
-        <!--
-        Customize this policy to fit your own app's needs. For more guidance, see:
-            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
-        Some notes:
-            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
-            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
-            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
-                * Enable inline JS: add 'unsafe-inline' to default-src
-        -->
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
-        <meta name="format-detection" content="telephone=no">
-        <meta name="msapplication-tap-highlight" content="no">
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
-        <link rel="stylesheet" type="text/css" href="css/index.css">
-        <title>Hello World</title>
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:; connect-src https://coapi.csie.mcu.edu.tw ;" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <title>課表查詢</title>
     </head>
     <body>
-        <div class="app">
-            <h1>Apache Cordova</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
-            </div>
+        <div id="app" class="app">
+            <input id="account" type="text" placeholder="學號" />
+            <input id="password" type="password" placeholder="密碼" />
+            <button id="submit">課表查詢</button>
         </div>
+        <table id="table">
+            <thead>
+                <tr>
+                    <th>&nbsp;</th>
+                    <th>星期一</th>
+                    <th>星期二</th>
+                    <th>星期三</th>
+                    <th>星期四</th>
+                    <th>星期五</th>
+                    <th>星期六</th>
+                    <th>星期日</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>01</th>
+                    <td id="c11"></td>
+                    <td id="c21"></td>
+                    <td id="c31"></td>
+                    <td id="c41"></td>
+                    <td id="c51"></td>
+                    <td id="c61"></td>
+                    <td id="c71"></td>
+                </tr>
+                <tr>
+                    <th>02</th>
+                    <td id="c12"></td>
+                    <td id="c22"></td>
+                    <td id="c32"></td>
+                    <td id="c42"></td>
+                    <td id="c52"></td>
+                    <td id="c62"></td>
+                    <td id="c72"></td>
+                </tr>
+                <tr>
+                    <th>03</th>
+                    <td id="c13"></td>
+                    <td id="c23"></td>
+                    <td id="c33"></td>
+                    <td id="c43"></td>
+                    <td id="c53"></td>
+                    <td id="c63"></td>
+                    <td id="c73"></td>
+                </tr>
+                <tr>
+                    <th>04</th>
+                    <td id="c14"></td>
+                    <td id="c24"></td>
+                    <td id="c34"></td>
+                    <td id="c44"></td>
+                    <td id="c54"></td>
+                    <td id="c64"></td>
+                    <td id="c74"></td>
+                </tr>
+                <tr>
+                    <th>20</th>
+                    <td id="c120"></td>
+                    <td id="c220"></td>
+                    <td id="c320"></td>
+                    <td id="c420"></td>
+                    <td id="c520"></td>
+                    <td id="c620"></td>
+                    <td id="c720"></td>
+                </tr>
+                <tr>
+                    <th>05</th>
+                    <td id="c15"></td>
+                    <td id="c25"></td>
+                    <td id="c35"></td>
+                    <td id="c45"></td>
+                    <td id="c55"></td>
+                    <td id="c65"></td>
+                    <td id="c75"></td>
+                </tr>
+                <tr>
+                    <th>06</th>
+                    <td id="c16"></td>
+                    <td id="c26"></td>
+                    <td id="c36"></td>
+                    <td id="c46"></td>
+                    <td id="c56"></td>
+                    <td id="c66"></td>
+                    <td id="c76"></td>
+                </tr>
+                <tr>
+                    <th>07</th>
+                    <td id="c17"></td>
+                    <td id="c27"></td>
+                    <td id="c37"></td>
+                    <td id="c47"></td>
+                    <td id="c57"></td>
+                    <td id="c67"></td>
+                    <td id="c77"></td>
+                </tr>
+                <tr>
+                    <th>08</th>
+                    <td id="c18"></td>
+                    <td id="c28"></td>
+                    <td id="c38"></td>
+                    <td id="c48"></td>
+                    <td id="c58"></td>
+                    <td id="c68"></td>
+                    <td id="c78"></td>
+                </tr>
+                <tr>
+                    <th>09</th>
+                    <td id="c19"></td>
+                    <td id="c29"></td>
+                    <td id="c39"></td>
+                    <td id="c49"></td>
+                    <td id="c59"></td>
+                    <td id="c69"></td>
+                    <td id="c79"></td>
+                </tr>
+                <tr>
+                    <th>30</th>
+                    <td id="c130"></td>
+                    <td id="c230"></td>
+                    <td id="c330"></td>
+                    <td id="c430"></td>
+                    <td id="c530"></td>
+                    <td id="c630"></td>
+                    <td id="c730"></td>
+                </tr>
+                <tr>
+                    <th>40</th>
+                    <td id="c140"></td>
+                    <td id="c240"></td>
+                    <td id="c340"></td>
+                    <td id="c440"></td>
+                    <td id="c540"></td>
+                    <td id="c640"></td>
+                    <td id="c740"></td>
+                </tr>
+                <tr>
+                    <th>50</th>
+                    <td id="c150"></td>
+                    <td id="c250"></td>
+                    <td id="c350"></td>
+                    <td id="c450"></td>
+                    <td id="c550"></td>
+                    <td id="c650"></td>
+                    <td id="c750"></td>
+                </tr>
+                <tr>
+                    <th>60</th>
+                    <td id="c160"></td>
+                    <td id="c260"></td>
+                    <td id="c360"></td>
+                    <td id="c460"></td>
+                    <td id="c560"></td>
+                    <td id="c660"></td>
+                    <td id="c760"></td>
+                </tr>
+                <tr>
+                    <th>70</th>
+                    <td id="c170"></td>
+                    <td id="c270"></td>
+                    <td id="c370"></td>
+                    <td id="c470"></td>
+                    <td id="c570"></td>
+                    <td id="c670"></td>
+                    <td id="c770"></td>
+                </tr>
+            </tbody>
+        </table>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
     </body>
