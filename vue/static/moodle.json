@@ -1,0 +1,118 @@
+[{
+    "name": "10502-01359商務溝通英文二",
+    "link": "http://moodle-24.mcu.edu.tw/course/view.php?id=4154",
+    "activities": {
+        "assignments": [],
+        "forums": []
+    }
+}, {
+    "name": "10502-00223區域文化專題",
+    "link": "http://moodle-20.mcu.edu.tw/course/view.php?id=2088",
+    "activities": {
+        "assignments": [],
+        "forums": []
+    }
+}, {
+    "name": "10502-02353體育（陸）",
+    "link": "http://moodle-20.mcu.edu.tw/course/view.php?id=2263",
+    "activities": {
+        "assignments": [],
+        "forums": []
+    }
+}, {
+    "name": "10502-36302班會",
+    "link": "http://moodle-26.mcu.edu.tw/course/view.php?id=2007",
+    "activities": {
+        "assignments": [],
+        "forums": []
+    }
+}, {
+    "name": "10502-36302作業系統",
+    "link": "http://moodle-26.mcu.edu.tw/course/view.php?id=2008",
+    "activities": {
+        "assignments": [{
+            "name": "Linux作業系統安裝練習(CentOS)",
+            "link": "http://moodle-26.mcu.edu.tw/mod/assign/view.php?id=87235",
+            "info": "規定繳交時間: 2017年 03月 7日(二) 23:55",
+            "details": "我的作業：已繳交，等待評分中, 尚未評分",
+            "needsReview": false,
+            "deadline": "5 天前",
+            "remaining": 1488902100
+        }, {
+            "name": "CentOS上硬體及插斷資訊檢查指令練習",
+            "link": "http://moodle-26.mcu.edu.tw/mod/assign/view.php?id=87851",
+            "info": "規定繳交時間: 2017年 03月 17日(五) 23:55",
+            "details": "我的作業：尚未繳交作業, 尚未評分",
+            "needsReview": true,
+            "deadline": "5 天內",
+            "remaining": 1489766100
+        }],
+        "forums": []
+    }
+}, {
+    "name": "10502-36302專題研究（一）",
+    "link": "http://moodle-26.mcu.edu.tw/course/view.php?id=2009",
+    "activities": {
+        "assignments": [],
+        "forums": []
+    }
+}, {
+    "name": "10502-36251XML 程式設計",
+    "link": "http://moodle-26.mcu.edu.tw/course/view.php?id=2023",
+    "activities": {
+        "assignments": [],
+        "forums": []
+    }
+}, {
+    "name": "10502-36351社群網路探勘",
+    "link": "http://moodle-26.mcu.edu.tw/course/view.php?id=2027",
+    "activities": {
+        "assignments": [],
+        "forums": []
+    }
+}, {
+    "name": "10502-36354iOS 程式設計",
+    "link": "http://moodle-26.mcu.edu.tw/course/view.php?id=2029",
+    "activities": {
+        "assignments": [],
+        "forums": []
+    }
+}, {
+    "name": "10502-36357社群媒體應用程式設計",
+    "link": "http://moodle-26.mcu.edu.tw/course/view.php?id=2030",
+    "activities": {
+        "assignments": [{
+            "name": "工研院 TTS：林詩穎、丁力、蔡璨名",
+            "link": "http://moodle-26.mcu.edu.tw/mod/assign/view.php?id=87825",
+            "info": "規定繳交時間: 2017年 03月 16日(四) 00:00",
+            "details": "我的作業：已繳交，等待評分中, 尚未評分",
+            "needsReview": false,
+            "deadline": "3 天內",
+            "remaining": 1489593600
+        }, {
+            "name": "aiohttp + MySQL：曾明、陶嘉良、黃萬賢",
+            "link": "http://moodle-26.mcu.edu.tw/mod/assign/view.php?id=87824",
+            "info": "規定繳交時間: 2017年 03月 16日(四) 00:00",
+            "details": "我的作業：尚未繳交作業, 尚未評分",
+            "needsReview": true,
+            "deadline": "3 天內",
+            "remaining": 1489593600
+        }],
+        "forums": []
+    }
+}, {
+    "name": "10502-36359Linux 系統應用實務",
+    "link": "http://moodle-26.mcu.edu.tw/course/view.php?id=2032",
+    "activities": {
+        "assignments": [{
+            "name": "File command line exercise",
+            "link": "http://moodle-26.mcu.edu.tw/mod/assign/view.php?id=87756",
+            "info": "規定繳交時間: 2017年 03月 15日(三) 12:55",
+            "details": "我的作業：尚未繳交作業, 尚未評分",
+            "needsReview": true,
+            "deadline": "3 天內",
+            "remaining": 1489553700
+        }],
+        "forums": []
+    }
+}]
