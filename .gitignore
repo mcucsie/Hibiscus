@@ -6,9 +6,12 @@ resources/signing
 
 # Node
 node_modules/
+npm-debug.log
+yarn-error.log
 
 # Vue, Webpack
 *.dist
+www/
 
 # Windows
 Thumbs.db
