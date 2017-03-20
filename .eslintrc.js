@@ -20,7 +20,9 @@ module.exports = {
     // allow debugger during development
     'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
     // disable handle-callback-err
-    'handle-callback-err': "off"
+    'handle-callback-err': "off",
+
+    'no-unused-expressions': ["error", { "allowTaggedTemplates": true }]
   },
   "env": {
     "browser": true,
