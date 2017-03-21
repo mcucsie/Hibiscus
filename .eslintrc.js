@@ -44,6 +44,7 @@ module.exports = {
     'space-before-function-paren': ['error', 'never'],
     'handle-callback-err': 0,
     'comma-dangle':0,
-    'no-console':0
+    'no-console':0,
+    'arrow-body-style':0
   }
 }

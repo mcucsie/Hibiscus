@@ -1,72 +1,60 @@
 <template>
-  <div class="container">
-    <md-list class="md-double-line">
-      <md-list-item v-for="update in updates" :key="update.name">
-        <md-icon class="md-accent" v-if="update.review">alarm</md-icon>
-        <md-icon class="md-primary" v-else>label</md-icon>
-
-        <div class="md-list-text-container">
-          <span>{{ update.name }}</span>
-          <span>{{ update.activity }} activities</span>
-        </div>
-
-        <md-button class="md-icon-button md-list-action" :href="update.link" target="_blank">
-          <md-icon>send</md-icon>
-        </md-button>
-
-      </md-list-item>
-    </md-list>
+  <div id="Moodle">
+    <mobile-tear-sheet>
+      <mu-list>
+        <mu-sub-header inset>Moodle 課程列表</mu-sub-header>
+        <mu-list-item v-for="update in updates" :title="update.name"
+                      :describeText="update.activity+' activities'" @click.native="openLink(update.link)">
+          <mu-avatar v-if="update.activity>0" 
+                     icon="assignment"
+                     backgroundColor="blue"
+                     slot="leftAvatar" />
+          <mu-avatar v-else
+                     icon="insert_chart"
+                     backgroundColor="yellow600"
+                     slot="leftAvatar" />
+          <mu-icon value="info"
+                   slot="right" />
+        </mu-list-item>
+      </mu-list>
+    </mobile-tear-sheet>
   </div>
 </template>
 
-<style>
-  .container {
-    margin: 0 auto;
-    max-width: 1280px;
-    width: 90%
-  }
-  
-  @media only screen and (min-width: 601px) {
-    .container {
-      width: 85%;
-    }
-  }
-  
-  @media only screen and (min-width: 993px) {
-    .container {
-      width: 70%;
-    }
-  }
-</style>
-
 <script>
-  import axios from 'axios';
+import apiClient from '../modal/apiClient'
 
-  const url = '/static/moodle.json';
-
-  export default {
-    data() {
-      return {
-        updates: [],
-      };
-    },
-    mounted() {
-      axios.get(url)
-        .then(response => response.data)
-        .then((data) => {
-          this.updates = data.map((update) => {
-            const review = update.activities.assignments.find(assignment => assignment.needsReview);
-            const activity = update.activities.assignments.length + update.activities.forums.length;
-            return {
-              activity,
-              review,
-              name: update.name,
-              link: update.link,
-            };
-          });
-        })
-        .catch(console.trace);
-    },
-  };
+export default {
+  data() {
+    return {
+      updates: [],
+    };
+  },
+  mounted() {
+    apiClient.getMoodleList()
+      .then((response) => {
+        this.updates = response.data.map((update) => {
+          const review = update.activities.assignments.find(assignment => assignment.needsReview);
+          const activity = update.activities.assignments.length + update.activities.forums.length;
+          return {
+            activity,
+            review,
+            name: update.name,
+            link: update.link,
+          };
+        });
+      })
+      .catch(console.trace);
+  },
+  methods: {
+    openLink(link) {
+      window.open(link);
+    }
+  }
+};
 
 </script>
+
+<style scoped>
+
+</style>
