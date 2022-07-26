@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "axios": "^0.21.4",
+    "glob-parent": "^6.0.1",
     "muse-ui": "^3.0.2",
     "vue": "^2.2.2",
     "vue-router": "^3.3.4",
